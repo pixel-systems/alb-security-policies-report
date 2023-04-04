@@ -1,0 +1,28 @@
+name: continuous-integration
+
+on:
+  pull_request:
+    branches: ["main"]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.CICD_GITHUB_REPOSITORY_TOKEN }} ## !!! DO NOT RENAME AS IS USED TO AUTHENTICAT GITHUB TFM PROVIDER 
+
+  PIXEL_CORE_AWS_ACCESS_KEY_ID: ${{ secrets.PIXEL_CORE_GITHUB_AWS_ACCESS_KEY_ID }}
+  PIXEL_CORE_AWS_SECRET_ACCESS_KEY: ${{ secrets.PIXEL_CORE_GITHUB_AWS_SECRET_ACCESS_KEY }}
+  REGION: ${{ secrets.AWS_REGION }}
+
+jobs:
+  mandatory-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: pixel-systems/conventional-commits-gh-action@v0.0.1
+        with:
+          settings-file: repo-config.json
+      - name: Ensure Jira ticket in all commits
+        uses: pixel-systems/ensure-commits-have-ticket-gh-action@v0.0.1
+        with:
+          base-branch: $GITHUB_BASE_REF
+          pr-branch: $GITHUB_HEAD_REF

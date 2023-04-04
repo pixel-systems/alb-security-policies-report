@@ -1,0 +1,36 @@
+{
+    "conventionalCommits": {
+      "break": {
+        "release": "major"
+      },
+      "feat": {
+        "release": "minor"
+      },
+      "fix": {
+        "release": "patch"
+      },
+      "chore": {
+        "release": "none"
+      },
+      "refactor": {
+        "release": "none"
+      },
+      "docs": {
+        "release": "none"
+      },
+      "ci": {
+        "release": "none"
+      },
+      "test": {
+        "release": "none"
+      }
+    },
+    "scopes": {
+      "gh": {
+        "folderPattern": ".github"
+      },
+      "src": {
+        "folderPattern": "src"
+      }
+    }
+  }
