@@ -25,8 +25,10 @@ def assume_role(account_number, role_name, region):
 
     iam_client = make_boto3_client('iam')
     elbv2_client = make_boto3_client('elbv2')
+    ec2_client = make_boto3_client('ec2')
 
     return {
         'elbv2': elbv2_client,
-        'iam': iam_client
+        'iam': iam_client,
+        'ec2': ec2_client
     }

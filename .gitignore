@@ -1,4 +1,5 @@
 lb_report.txt
+*.txt
 config.yaml
 tests/**
 tests
