@@ -26,9 +26,19 @@ def assume_role(account_number, role_name, region):
     iam_client = make_boto3_client('iam')
     elbv2_client = make_boto3_client('elbv2')
     ec2_client = make_boto3_client('ec2')
+    ssm_client = make_boto3_client('ssm')
+    lambda_client = make_boto3_client('lambda')
+    logs_client = make_boto3_client('logs')
+    resourcegroupstaggingapi_client = make_boto3_client('resourcegroupstaggingapi')
+    route53_client = make_boto3_client('route53')
 
     return {
         'elbv2': elbv2_client,
         'iam': iam_client,
-        'ec2': ec2_client
+        'ec2': ec2_client,
+        'ssm': ssm_client,
+        'lambda': lambda_client,
+        'logs': logs_client,
+        'resourcegroupstaggingapi': resourcegroupstaggingapi_client,
+        'route53': route53_client
     }
